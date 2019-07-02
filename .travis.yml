@@ -5,3 +5,11 @@ services:
 script:
   - docker build -t massinovitch/node .
   - docker images massinovitch/node 
+before_deploy:
+  - docker login -u massinovitch -p Rezi2010?
+
+deploy:
+  provider: script
+  script: docker push massinovitch/node
+  on:
+   branch: master
